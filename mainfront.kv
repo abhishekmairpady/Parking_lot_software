@@ -1,0 +1,119 @@
+WindowManager:
+    Container:
+        name: "login"
+
+#MAIN PAGE
+#-----------------------------------------------------------------------------------------
+<Container>:
+    BoxLayout:
+        orientation:'vertical'
+
+        #Header
+        #--------------------------------------------------------------
+        Label:
+            
+        
+            height:'20dp'
+            size_hint_y:None
+            text: 'PARKING LOT'
+            bold: True
+            font_size: 30
+            size_hint:(1,0.15)
+            pos_hint:{'center_x':0.5, 'center_y':0.5 }
+            canvas.before:
+                Color:
+                    rgba: 0.25,0.5,0.8,0.8
+                Rectangle:
+                    # self here refers to the widget i.e FloatLayout
+                    pos: self.pos
+                    size:self.size
+
+
+        #Scroll view strat
+        #---------------------------------------------------------------------
+        ScrollView:
+            size_hint:(1, None)
+            size:(0, 450)
+            bar_width: 5
+            BoxLayout:
+                padding:[140,0,140,0]
+                orientation:'vertical'
+                size_hint: 1,None
+                height: self.minimum_height
+            
+        
+                #Selectig 5_o_Clock_Shadow
+                #------------------------------------------------------
+                BoxLayout:
+                    height:'80dp'
+                    size_hint_y:None
+                    padding:20
+                    spacing:20
+
+                    Label:
+                    
+                        text:'5 o Clock Shadow'
+                        font_size: 20
+                        size_hint_x:1
+                        
+                    Spinner:
+                        id: gend
+                        size_hint_x:2
+                        text: "5_o_Clock_Shadow "                   
+                        values: ["Yes","No"]       
+                        on_text:
+                            print(self.text)
+                            k="5_o_Clock_Shadow"
+                            v=self.text
+                            root.enterdict(k,v)
+
+                #Selecting Young
+                #------------------------------------------------------------------------------------------------
+
+                BoxLayout:
+                    height:'80dp'
+                    size_hint_y:None
+                    padding:20
+                    spacing:20
+
+                    Label:
+                    
+                        text:'Young'
+                        font_size: 20
+                        size_hint_x:1
+                        
+                    Spinner:
+                        size_hint_x:2
+                        text: "Young "                   
+                        values: ["Yes","No"]       
+                        on_text:
+                            print(self.text)
+                            k="Young"
+                            v=self.text
+                            root.enterdict(k,v)
+
+
+                
+        #-----------------------------------------------------------------------
+        #Scroll view end
+        #-----------------------------------------------------------------------
+
+        #Footer
+        #--------------------------------------------------------------------------------
+        BoxLayout:
+            height:'80dp'
+            size_hint_y:None
+            padding:[100,20,100,20]
+            spacing:20
+            Button: 
+                text: 'Home'
+                background_normal:''
+                background_color:[0.25,0.5,0.8,0.9]
+                on_press: root.manager.current = 'login'
+            Button:
+                text: 'SUBMIT'
+                background_normal:''
+                background_color:[0.25,0.5,0.8,0.9]
+                on_press:
+                    root.encodeddict() 
+                    root.manager.current = 'resultpage'
