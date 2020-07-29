@@ -1,4 +1,5 @@
 import sqlite3
+from datetime import datetime
 
 
 
@@ -40,10 +41,14 @@ if __name__=="__main__":
 
     vehicleno=input("vehicleno: ")
     fourwheeler=input("fourwheeler: ")
-    hour=float(input("hour: "))
+    #hour=float(input("hour: "))
     valetparking=input("valetparking: ")
     pstatus="Parked"
     lotno=int(input("lotno: "))
+
+    now = datetime.now()
+    hour = now.strftime("%H:%M:%S")
+
     v=ParkedVehicle(vehicleno,fourwheeler,hour,valetparking,pstatus)
     
     vdict={}
