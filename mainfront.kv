@@ -28,75 +28,120 @@ WindowManager:
                     pos: self.pos
                     size:self.size
 
-
-        #Scroll view strat
-        #---------------------------------------------------------------------
-        ScrollView:
-            size_hint:(1, None)
-            size:(0, 450)
-            bar_width: 5
+        BoxLayout:
             BoxLayout:
-                padding:[140,0,140,0]
-                orientation:'vertical'
-                size_hint: 1,None
-                height: self.minimum_height
-            
-        
-                #Selectig 5_o_Clock_Shadow
-                #------------------------------------------------------
+                Button: 
+                    text: 'Home'
+                    background_normal:''
+                    background_color:[0.25,0.5,0.8,0.9]
+                    on_press: 
+
+
+            #Scroll view strat
+            #---------------------------------------------------------------------
+            ScrollView:
+                size_hint:(1, None)
+                size:(0, 450)
+                bar_width: 5
                 BoxLayout:
-                    height:'80dp'
-                    size_hint_y:None
-                    padding:20
-                    spacing:20
-
-                    Label:
-                    
-                        text:'5 o Clock Shadow'
-                        font_size: 20
-                        size_hint_x:1
-                        
-                    Spinner:
-                        id: gend
-                        size_hint_x:2
-                        text: "5_o_Clock_Shadow "                   
-                        values: ["Yes","No"]       
-                        on_text:
-                            print(self.text)
-                            k="5_o_Clock_Shadow"
-                            v=self.text
-                            root.enterdict(k,v)
-
-                #Selecting Young
-                #------------------------------------------------------------------------------------------------
-
-                BoxLayout:
-                    height:'80dp'
-                    size_hint_y:None
-                    padding:20
-                    spacing:20
-
-                    Label:
-                    
-                        text:'Young'
-                        font_size: 20
-                        size_hint_x:1
-                        
-                    Spinner:
-                        size_hint_x:2
-                        text: "Young "                   
-                        values: ["Yes","No"]       
-                        on_text:
-                            print(self.text)
-                            k="Young"
-                            v=self.text
-                            root.enterdict(k,v)
-
-
+                    padding:[140,0,140,0]
+                    orientation:'vertical'
+                    size_hint: 1,None
+                    height: self.minimum_height
                 
-        #-----------------------------------------------------------------------
-        #Scroll view end
-        #-----------------------------------------------------------------------
+            
+                    #Selectig vehicleno
+                    #------------------------------------------------------
+                    BoxLayout:
+                        height:'80dp'
+                        size_hint_y:None
+                        padding:20
+                        spacing:20
+
+                        Label:
+                        
+                            text:'Vehicle No'
+                            font_size: 20
+                            size_hint_x:1
+                            
+                        TextInput:
+                            id: vehicleno
+                            text:''
+                            font_size: 20
+                            size_hint_x:2
+                            
+
+                    #Selecting fourwheeler
+                    #------------------------------------------------------------------------------------------------
+
+                    BoxLayout:
+                        height:'80dp'
+                        size_hint_y:None
+                        padding:20
+                        spacing:20
+
+                        Label:
+                        
+                            text:'Four Wheeler'
+                            font_size: 20
+                            size_hint_x:1
+                            
+                        Spinner:
+                            size_hint_x:2
+                            id: fourwheeler
+                            text: "Choose "                   
+                            values: ["Yes","No"]       
+                            on_text:
+                                print(self.text)
+                                
+
+                    #Selecting valetparking
+                    #------------------------------------------------------------------------------------------------
+
+                    BoxLayout:
+                        height:'80dp'
+                        size_hint_y:None
+                        padding:20
+                        spacing:20
+
+                        Label:
+                        
+                            text:'Valet Parking'
+                            font_size: 20
+                            size_hint_x:1
+                            
+                        Spinner:
+                            size_hint_x:2
+                            text: "Choose "                   
+                            values: ["Yes","No"]   
+                            id: valetparking    
+                            on_text:
+                                print(self.text)
+                                
+
+                    #Selectig lotno
+                    #------------------------------------------------------
+                    BoxLayout:
+                        height:'80dp'
+                        size_hint_y:None
+                        padding:20
+                        spacing:20
+
+                        Label:
+                        
+                            text:'Lot No'
+                            font_size: 20
+                            size_hint_x:1
+                            
+                        TextInput:
+                            id: lotno
+                            text:''
+                            font_size: 20
+                            size_hint_x:2
+                            
+            #-----------------------------------------------------------------------
+            #Scroll view end
+            #-----------------------------------------------------------------------
 
         #Footer
         #--------------------------------------------------------------------------------
@@ -115,5 +160,5 @@ WindowManager:
                 background_normal:''
                 background_color:[0.25,0.5,0.8,0.9]
                 on_press:
-                    root.encodeddict() 
-                    root.manager.current = 'resultpage'
+                    root.entertableinfo(vehicleno.text,fourwheeler.text,valetparking.text,lotno.text) 
+                    #root.manager.current = 'resultpage'
